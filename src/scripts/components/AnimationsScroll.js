@@ -129,7 +129,7 @@ export default class AnimationsScroll {
             duration: 0.7,
             ease: 'back.out(2)',
             stagger: 0.025,
-            scrollTrigger: { trigger: titre, start: 'top 85%', once: true },
+            scrollTrigger: { trigger: titre, start: 'top 55%', once: true },
           }),
       });
     });
@@ -167,6 +167,7 @@ export default class AnimationsScroll {
       const numero = carte.querySelector('.carte-force_numero');
       const valeur = parseInt(numero.textContent, 10);
       const compteur = { n: 0 };
+      numero.textContent = '00';
 
       const tl = gsap.timeline({ scrollTrigger: { trigger: carte, start: 'top 85%', once: true } });
 
