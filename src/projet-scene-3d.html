@@ -1,6 +1,6 @@
 {# TODO Nat : valider ou réécrire les défis et les solutions #}
 {% set projet = {
-    titre: "Animation d’une scène 3D complexe",
+    titre: "Animation 3D – Route vers l’infini",
     type: "Projet individuel",
     description: "<strong>Construction</strong> et animation d’une scène 3D au choix, avec une <strong>transition</strong> pour l’intégrer à une boucle vidéo du cours.",
     ia: "Idée et scénarimage (Claude, Gemini)",
@@ -57,6 +57,7 @@
         titre: "Route vers l’infini",
         sousTitre: "Cours d’animation 3D",
         image: "assets/images/projets/scene-3d/resultat.webp",
+        miniature: true,
         video: "p63bjjIv2lQ",
         equipe: ["Nathan Fortier"]
     },
@@ -74,7 +75,7 @@
         { fort: "Explorer", texte: "quatre univers avec l’aide de Claude et Gemini, puis faire évoluer l’idée jusqu’à l’oasis égyptienne." },
         { fort: "Optimiser", texte: "la scène grâce à la documentation de Blender et à des tutoriels YouTube : assets allégés et réglages de rendu ajustés pour réduire le temps de calcul." }
     ],
-    suivant: { titre: "Animation 2D d’une vidéo musicale", lien: "projet-video-musicale.html" }
+    suivant: { titre: "Animation 2D – Le rap des héros", lien: "projet-video-musicale.html" }
 } %}
 
 {% include "_partials/_header.html" with {title: projet.titre, activePage: "projets", retourHaut: true} %}

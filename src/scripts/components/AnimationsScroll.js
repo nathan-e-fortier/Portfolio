@@ -208,7 +208,7 @@ export default class AnimationsScroll {
           opacity: 0.15,
           stagger: 0.1,
           ease: 'none',
-          scrollTrigger: { trigger: texte, start: 'top 80%', end: 'bottom 45%', scrub: true },
+          scrollTrigger: { trigger: texte, start: 'top 95%', end: 'bottom 70%', scrub: true },
         }),
     });
   }

@@ -115,13 +115,15 @@
             <h2 class="fiche-resultat_titre">Résultat final</h2>
 
             <div class="fiche-resultat_video" data-scrolly="fromBottom"{% if projet.resultat.video %} data-component="Youtube" data-video-id="{{ projet.resultat.video }}"{% endif %}>
-                <div class="fiche-resultat_affiche js-poster">
+                <div class="fiche-resultat_affiche js-poster{% if projet.resultat.miniature %} fiche-resultat_affiche-miniature{% endif %}">
                     <img src="{{ projet.resultat.image }}" alt="" class="fiche-resultat_image" loading="lazy" />
 
+                    {% if not projet.resultat.miniature %}
                     <div class="fiche-resultat_video-texte">
                         <p class="fiche-resultat_video-titre">{{ projet.resultat.titre }}</p>
                         <p class="fiche-resultat_video-sous-titre">{{ projet.resultat.sousTitre }}</p>
                     </div>
+                    {% endif %}
 
                     {% if projet.resultat.video %}
                     {% include "_bouton-lecture.html" with {label: "Voir la vidéo : " ~ projet.resultat.titre} %}
@@ -134,11 +136,13 @@
                     </a>
                     {% endif %}
 
+                    {% if not projet.resultat.miniature %}
                     <ul class="fiche-resultat_equipe">
                         {% for nom in projet.resultat.equipe %}
                         <li>{{ nom }}</li>
                         {% endfor %}
                     </ul>
+                    {% endif %}
                 </div>
 
                 {% if projet.resultat.video %}

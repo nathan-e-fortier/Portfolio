@@ -51,6 +51,14 @@
         }
     }
 
+    &_affiche-miniature::after {
+        content: none;
+    }
+
+    &_video:has(&_affiche-miniature) {
+        background-color: #f6f4f1;
+    }
+
     &_image {
         position: absolute;
         inset: 0;
