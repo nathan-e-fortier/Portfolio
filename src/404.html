@@ -1,0 +1,23 @@
+{% include "_partials/_header.html" with {title:"Page introuvable", activePage:"", base:"/Portfolio/"} %}
+
+<main class="erreur" data-component="FondScroll">
+    <section class="erreur_section" data-fond="clair">
+        <div class="wrapper erreur_contenu">
+            <p class="erreur_code" aria-hidden="true">404</p>
+            <h1 class="erreur_titre">Page introuvable</h1>
+            <p class="erreur_texte">On dirait que le son a coupé&nbsp;: cette page n'existe pas ou a été déplacée.</p>
+            <div class="erreur_actions">
+                <a href="index.html" class="bouton">
+                    Retour à l'accueil
+                    <span class="bouton_icone" aria-hidden="true"></span>
+                </a>
+                <a href="index.html#projets" class="bouton">
+                    Voir mes projets
+                    <span class="bouton_icone" aria-hidden="true"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include "_partials/_footer.html" %}
