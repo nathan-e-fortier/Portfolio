@@ -217,18 +217,15 @@ export default class AnimationsScroll {
     this.element.querySelectorAll('.etape_media').forEach((media) => {
       const images = media.querySelectorAll('.etape_agrandir');
 
-      // https://gsap.com/docs/v3/Plugins/ScrollTrigger/ (clip-path)
-      gsap.fromTo(
-        media,
-        { clipPath: 'polygon(0% 0%, 0% 0%, -25% 100%, -25% 100%)' },
-        {
-          clipPath: 'polygon(0% 0%, 125% 0%, 100% 100%, -25% 100%)',
-          duration: 1.1,
-          ease: 'power3.inOut',
-          clearProps: 'clipPath',
-          scrollTrigger: { trigger: media, start: 'top 80%', once: true },
-        }
-      );
+      // https://gsap.com/docs/v3/GSAP/gsap.from()
+      gsap.from(media, {
+        y: 40,
+        autoAlpha: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        clearProps: 'transform',
+        scrollTrigger: { trigger: media, start: 'top 85%', once: true },
+      });
 
       // https://gsap.com/docs/v3/Plugins/ScrollTrigger/ (scrub)
       gsap.fromTo(
