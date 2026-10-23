@@ -12,12 +12,12 @@
     margin: 0;
     padding: calc(var(--taille) * 0.14);
     border-radius: 50%;
-    background-color: var(--color-primary);
+    background-color: var(--color-or);
     box-shadow:
-        inset 0 0 0 calc(var(--taille) * 0.04) var(--color-primary),
+        inset 0 0 0 calc(var(--taille) * 0.04) var(--color-or),
         inset 0 0 0 calc(var(--taille) * 0.055) var(--color-white),
         var(--shadow-card-lg);
-    color: var(--color-white);
+    color: var(--color-dark);
     text-align: center;
     text-transform: uppercase;
     transform: rotate(-12deg);

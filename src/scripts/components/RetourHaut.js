@@ -1,4 +1,4 @@
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import defilerVers from '../utils/defilerVers';
 
 export default class RetourHaut {
   constructor(element) {
@@ -15,12 +15,6 @@ export default class RetourHaut {
   }
 
   remonter() {
-    const smoother = ScrollSmoother.get();
-
-    if (smoother) {
-      smoother.scrollTo(0, true);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    defilerVers(0);
   }
 }

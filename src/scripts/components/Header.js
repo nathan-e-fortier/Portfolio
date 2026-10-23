@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import defilerVers from '../utils/defilerVers';
 
 
 export default class Header {
@@ -167,7 +168,7 @@ export default class Header {
     const logo = this.element.querySelector('.entete_logo');
 
     logo.addEventListener('click', (e) => {
-      const surPageAccueil = document.querySelector('#apropos');
+      const surPageAccueil = document.querySelector('#accueil');
       if (!surPageAccueil) return;
 
       e.preventDefault();
@@ -176,7 +177,7 @@ export default class Header {
         this.onToggleNav();
       }
 
-      ScrollSmoother.get().scrollTo(0, true);
+      defilerVers(0);
     });
   }
 }

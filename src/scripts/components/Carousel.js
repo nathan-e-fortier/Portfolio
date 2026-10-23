@@ -68,10 +68,11 @@ export default class Carousel {
 
     if ('autoplay' in this.element.dataset) {
       this.options.autoplay = {
-        delay: 6000,
+        delay: parseInt(this.element.dataset.autoplay, 10) || 6000,
         pauseOnMouseEnter: true,
         disableOnInteraction: false,
       };
+      this.options.rewind = !this.options.loop;
     }
 
     if ('loop' in this.element.dataset) {

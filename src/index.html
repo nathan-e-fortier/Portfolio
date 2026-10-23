@@ -1,7 +1,7 @@
 {% include "_partials/_header.html" with {title:"À propos", activePage:"apropos"} %}
 
 <main class="apropos" data-component="FondScroll">
-    <section class="heros" id="apropos" data-fond="clair">
+    <section class="heros" id="accueil" data-fond="clair">
         <div class="wrapper">
             <div class="heros_contenu" data-scrolly="fromBottom">
                 <a href="#video-presentation" class="heros_photo" aria-label="Voir ma vidéo de présentation">
@@ -99,15 +99,32 @@
             <span class="portfolio_indice-scroll" aria-hidden="true"></span>
         </div>
 
-        <div class="carousel-projets swiper" data-component="Carousel" data-breakpoints>
+        <div class="carousel-projets swiper" data-component="Carousel" data-breakpoints data-autoplay="3000">
             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <article class="carte-projet">
+                        {% include "_partials/_tampon-prix.html" with {prix: "Meilleur site web", variante: "carte"} %}
+                        <div class="carte-projet_media">
+                            <img src="assets/images/project-webjam-bg.webp" alt="Site web WordPress du Q-tipousse" />
+                        </div>
+                        <div class="carte-projet_corps">
+                            <p class="carte-projet_etiquette">Site WordPress en équipe</p>
+                            <h3 class="carte-projet_titre">Design web –<br />Webjam 2026</h3>
+                            <a href="projet-webjam.html" class="bouton">
+                                Voir ce projet
+                                <span class="bouton_icone" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
                 <div class="swiper-slide">
                     <article class="carte-projet">
                         <div class="carte-projet_media">
                             <img src="assets/images/project-reaper-bg.webp" alt="Bande-annonce montée et sonorisée sur Reaper" />
                         </div>
                         <div class="carte-projet_corps">
-                            <p class="carte-projet_etiquette">Bande-annonce sur Reaper</p>
+                            <p class="carte-projet_etiquette">Montage sonore sur Reaper</p>
                             <h3 class="carte-projet_titre">Recréation – Bande-annonce</h3>
                             <a href="projet-reaper.html" class="bouton">
                                 Voir ce projet
@@ -164,30 +181,17 @@
                         </div>
                     </article>
                 </div>
-
-                <div class="swiper-slide">
-                    <article class="carte-projet">
-                        {% include "_partials/_tampon-prix.html" with {prix: "Meilleur site web", variante: "carte"} %}
-                        <div class="carte-projet_media">
-                            <img src="assets/images/project-webjam-bg.webp" alt="Site web WordPress du Q-tipousse" />
-                        </div>
-                        <div class="carte-projet_corps">
-                            <p class="carte-projet_etiquette">Site WordPress en équipe</p>
-                            <h3 class="carte-projet_titre">Design web –<br />Webjam 2026</h3>
-                            <a href="projet-webjam.html" class="bouton">
-                                Voir ce projet
-                                <span class="bouton_icone" aria-hidden="true"></span>
-                            </a>
-                        </div>
-                    </article>
-                </div>
             </div>
 
             <div class="swiper-pagination"></div>
         </div>
     </section>
 
-    <section class="expertise" data-fond="sombre">
+    <section class="expertise" id="apropos" data-fond="sombre">
+        <div class="wrapper expertise_apropos">
+            <h2 class="expertise_apropos-titre">À propos</h2>
+        </div>
+
         <div class="wrapper expertise_outils">
             <div class="surtitre">
                 <span aria-hidden="true"></span>

@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import ComponentFactory from './ComponentFactory';
 import Icons from './utils/Icons';
+import defilerVers from './utils/defilerVers';
 
 class Main {
   constructor() {
@@ -34,7 +35,7 @@ class Main {
       if (!memePage || !cible) return;
 
       e.preventDefault();
-      this.smoother.scrollTo(cible, true, 'top top');
+      defilerVers(cible);
     });
 
     if (location.hash) {
