@@ -26,6 +26,11 @@ export default class AnimationsScroll {
       this.imagesEtapes();
       this.entetesEtapes();
       this.videoResultat();
+      this.herosFiche();
+      this.defis();
+      this.navigationFiche();
+      this.blocInterets();
+      this.videoPresentation();
     });
 
     window.addEventListener('load', () => ScrollTrigger.refresh());
@@ -136,7 +141,7 @@ export default class AnimationsScroll {
   }
 
   cartes() {
-    const groupes = ['.carte-outil', '.carte-projet', '.fiche-heros_roles li'];
+    const groupes = ['.carte-outil', '.carte-projet'];
 
     groupes.forEach((selecteur) => {
       const cartes = this.element.querySelectorAll(selecteur);
@@ -270,5 +275,150 @@ export default class AnimationsScroll {
         scrollTrigger: { trigger: video, start: 'top 90%', end: 'top 30%', scrub: true },
       }
     );
+  }
+
+  herosFiche() {
+    const heros = this.element.querySelector('.fiche-heros');
+    if (!heros) return;
+
+    const textes = heros.querySelectorAll(
+      '.fiche-heros_retour, .fiche-heros_type, .fiche-heros_titre, .fiche-heros_description, .fiche-heros_contexte, .fiche-heros_lien'
+    );
+    const tuiles = heros.querySelectorAll('.fiche-heros_collage span');
+    const etiquettes = heros.querySelectorAll('.fiche-heros_etiquette, .fiche-heros_ia');
+    const roles = heros.querySelectorAll('.fiche-heros_roles li');
+    const outils = heros.querySelectorAll('.fiche-heros_outils li');
+    const tampon = heros.querySelector('.tampon-prix');
+    const distance = this.desktop ? 120 : 50;
+    const departs = [
+      { x: -distance, y: -distance * 0.5 },
+      { x: distance, y: -distance * 0.5 },
+      { x: 0, y: distance },
+    ];
+
+    // https://gsap.com/docs/v3/GSAP/Timeline/
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.from(textes, { y: 30, autoAlpha: 0, duration: 0.6, stagger: 0.08, clearProps: 'transform' })
+      .from(
+        tuiles,
+        {
+          x: (i) => departs[i].x,
+          y: (i) => departs[i].y,
+          scale: 0.85,
+          autoAlpha: 0,
+          duration: 0.9,
+          stagger: 0.1,
+          clearProps: 'transform',
+        },
+        0.15
+      )
+      .from(etiquettes, { y: 15, autoAlpha: 0, duration: 0.5, stagger: 0.05 }, '-=0.5')
+      .from(roles, { y: 20, autoAlpha: 0, duration: 0.5, stagger: 0.06, clearProps: 'transform' }, '<')
+      // https://gsap.com/docs/v3/Eases/
+      .from(outils, { scale: 0, autoAlpha: 0, duration: 0.5, stagger: 0.07, ease: 'back.out(2.5)', clearProps: 'transform' }, '<0.1');
+
+    if (tampon) {
+      tl.from(tampon, { scale: 0, rotation: -200, autoAlpha: 0, duration: 0.9, ease: 'back.out(1.8)', clearProps: 'transform' }, '-=0.4');
+    }
+  }
+
+  defis() {
+    const liste = this.element.querySelector('.fiche-defis_cartes');
+    if (!liste) return;
+
+    const cartes = liste.querySelectorAll('.carte-defi');
+    const reponses = this.element.querySelector('.fiche-defis_reponses');
+    const centre = (el) => {
+      const r = el.getBoundingClientRect();
+      return r.left + r.width / 2;
+    };
+
+    // https://gsap.com/docs/v3/Plugins/ScrollTrigger/
+    const tl = gsap.timeline({ scrollTrigger: { trigger: liste, start: 'top 80%', once: true } });
+
+    // https://gsap.com/docs/v3/GSAP/gsap.from()
+    tl.from(cartes, {
+      x: (i, carte) => centre(liste) - centre(carte),
+      y: 120,
+      rotation: (i) => (i % 2 ? 14 : -14),
+      autoAlpha: 0,
+      duration: 0.9,
+      ease: 'back.out(1.3)',
+      stagger: 0.18,
+      clearProps: 'transform',
+    });
+
+    if (reponses) {
+      tl.from(reponses, { y: 40, autoAlpha: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.4');
+    }
+  }
+
+  navigationFiche() {
+    const nav = this.element.querySelector('.fiche-navigation');
+    if (!nav) return;
+
+    // https://gsap.com/docs/v3/GSAP/gsap.from()
+    gsap.from(nav.querySelectorAll('.bouton'), {
+      x: (i) => (i ? 1 : -1) * (this.desktop ? 80 : 30),
+      autoAlpha: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      stagger: 0.1,
+      clearProps: 'transform',
+      scrollTrigger: { trigger: nav, start: 'top 95%', once: true },
+    });
+  }
+
+  blocInterets() {
+    const bloc = this.element.querySelector('.interets');
+    if (!bloc) return;
+
+    const rayon = getComputedStyle(bloc).borderTopLeftRadius;
+
+    // https://gsap.com/docs/v3/Plugins/ScrollTrigger/ (scrub)
+    gsap.fromTo(
+      bloc,
+      { clipPath: `inset(6% 8% round ${rayon})` },
+      {
+        clipPath: `inset(0% 0% round ${rayon})`,
+        ease: 'none',
+        scrollTrigger: { trigger: bloc, start: 'top 95%', end: 'top 40%', scrub: true },
+      }
+    );
+  }
+
+  videoPresentation() {
+    const carte = this.element.querySelector('.carte-video');
+    if (!carte) return;
+
+    const coins = carte.querySelectorAll('.carte-video_viseur span');
+    const baguettes = carte.querySelector('.carte-video_baguettes');
+    const ecouteurs = carte.querySelector('.carte-video_ecouteurs');
+
+    // https://gsap.com/docs/v3/Plugins/ScrollTrigger/ (scrub)
+    gsap.fromTo(
+      carte,
+      { scale: 0.92 },
+      {
+        scale: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: carte, start: 'top 95%', end: 'top 45%', scrub: true },
+      }
+    );
+
+    // https://gsap.com/docs/v3/GSAP/gsap.from()
+    gsap.from(coins, {
+      scale: 1.8,
+      autoAlpha: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+      stagger: 0.08,
+      scrollTrigger: { trigger: carte, start: 'top 60%', once: true },
+    });
+
+    const parallaxe = { trigger: carte, start: 'top bottom', end: 'bottom top', scrub: true };
+    gsap.fromTo(baguettes, { yPercent: 8 }, { yPercent: -8, ease: 'none', scrollTrigger: parallaxe });
+    gsap.fromTo(ecouteurs, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { ...parallaxe } });
   }
 }

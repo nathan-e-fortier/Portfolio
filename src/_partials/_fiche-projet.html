@@ -14,6 +14,12 @@
                     {% if projet.contexte %}
                     <p class="fiche-heros_contexte">{{ projet.contexte }}</p>
                     {% endif %}
+                    {% if projet.lienEvenement %}
+                    <a href="{{ projet.lienEvenement.url }}" class="bouton bouton_inverse fiche-heros_lien" target="_blank" rel="noopener">
+                        {{ projet.lienEvenement.texte }}
+                        <span class="bouton_icone" aria-hidden="true"></span>
+                    </a>
+                    {% endif %}
                 </div>
 
                 <div class="fiche-heros_media">
